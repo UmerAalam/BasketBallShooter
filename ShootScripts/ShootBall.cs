@@ -37,7 +37,9 @@ public class ShootBall : MonoBehaviour
         Aim();
         if(hit_Ground)
         {
-
+            life -= Time.deltaTime;
+            Color color = GetComponent<Renderer>().material.GetColor("_Color");
+            GetComponent<Renderer>().material.SetColor("_Color",new Color(color.r,color.g,color.b,life));
         }
     }
     void Aim()
