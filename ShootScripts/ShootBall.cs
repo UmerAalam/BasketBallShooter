@@ -57,8 +57,16 @@ public class ShootBall : MonoBehaviour
         {
             if(inDeadZone(Input.mousePosition) || inReleaseZone(Input.mousePosition))
             {
-
+                aiming = false;
+                HidePath();
+                return;
             }
+            myBody.isKinematic = false;
+            myCollider.enabled = true;
+            shoot = true;
+            aiming = false;
+            myBody.AddForce(GetForce(Input.mousePosition));
+            HidePath();
         }
     }
     Vector2 GetForce(Vector3 mousePosition)
@@ -84,7 +92,7 @@ public class ShootBall : MonoBehaviour
         }
         else
         {
-            return false;
+             return false;
         }
     }
     void CalculatePath()
