@@ -35,6 +35,10 @@ public class ShootBall : MonoBehaviour
     private void Update()
     {
         Aim();
+        if(hit_Ground)
+        {
+
+        }
     }
     void Aim()
     {
@@ -127,8 +131,11 @@ public class ShootBall : MonoBehaviour
             projectTilesPath[i].GetComponent<Renderer>().enabled = true;
       }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            hit_Ground = true;
+        }
     }
 }
