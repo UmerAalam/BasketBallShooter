@@ -6,7 +6,7 @@ using System.Linq;
 public class ShootBall : MonoBehaviour
 {
     public float power = 2.0f;
-    public float life = 1.0f;
+    public float life = 2.0f;
     public float dead_Sense = 25f;
     public int dots = 30;
     private GameObject Dots;
@@ -40,6 +40,14 @@ public class ShootBall : MonoBehaviour
             life -= Time.deltaTime;
             Color color = GetComponent<Renderer>().material.GetColor("_Color");
             GetComponent<Renderer>().material.SetColor("_Color",new Color(color.r,color.g,color.b,life));
+            if(life < 0)
+            {
+                if(GameManager.instance != null)
+                {
+                    GameManager.instance.CreateBall(SelectBall.instance.ReturnIndex());
+                }
+                Destroy(gameObject);
+            }
         }
     }
     void Aim()
