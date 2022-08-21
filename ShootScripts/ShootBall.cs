@@ -67,9 +67,13 @@ public class ShootBall : MonoBehaviour
     }
     bool inDeadZone(Vector3 mouse)
     {
-        if(Mathf.Abs(startPosition.x - mouse.x) <= dead_Sense)
+        if(Mathf.Abs(startPosition.x - mouse.x) <= dead_Sense && Mathf.Abs(startPosition.y - mouse.y) <= dead_Sense)
         {
-
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
     bool inReleaseZone(Vector3 mouse)
