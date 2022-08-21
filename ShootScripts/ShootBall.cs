@@ -9,7 +9,7 @@ public class ShootBall : MonoBehaviour
     public float life = 1.0f;
     public float dead_Sense = 25f;
     public int dots = 30;
-    [SerializeField] GameObject Dots;
+    private GameObject Dots;
     private Vector2 startPosition;
     private bool shoot = false, aiming = false, hit_Ground = false;
     private List<GameObject> projectTilesPath;
@@ -22,6 +22,7 @@ public class ShootBall : MonoBehaviour
     }
     private void Start()
     {
+        Dots = GameObject.Find("Dots");
         myBody.isKinematic = true;
         myCollider.enabled = false;
         startPosition = transform.position;
