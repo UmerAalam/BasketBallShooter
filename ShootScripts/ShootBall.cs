@@ -52,7 +52,10 @@ public class ShootBall : MonoBehaviour
             {
                 CalculatePath();
             }
-            else if(aiming && !shoot)
+        }
+        else if(aiming && !shoot)
+        {
+            if(inDeadZone(Input.mousePosition) || inReleaseZone(Input.mousePosition))
             {
 
             }
@@ -64,7 +67,10 @@ public class ShootBall : MonoBehaviour
     }
     bool inDeadZone(Vector3 mouse)
     {
-        return false;
+        if(Mathf.Abs(startPosition.x - mouse.x) <= dead_Sense)
+        {
+
+        }
     }
     bool inReleaseZone(Vector3 mouse)
     {
