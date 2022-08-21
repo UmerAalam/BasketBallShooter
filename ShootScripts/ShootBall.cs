@@ -78,7 +78,14 @@ public class ShootBall : MonoBehaviour
     }
     bool inReleaseZone(Vector3 mouse)
     {
-        return false;
+        if (mouse.x <= 70)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     void CalculatePath()
     {
